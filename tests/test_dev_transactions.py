@@ -63,7 +63,7 @@ def test_build_summary_groups_only_approved(sample_records):
         & (summary["bin"] == "400490")
     ].iloc[0]
     assert row["approved_transactions_count"] == 2
-    assert row["approved_total_amount"] == 3000
+    assert row["approved_total_amount_cents"] == 3000
 
 
 def test_build_summary_separates_days(sample_records):
@@ -74,7 +74,7 @@ def test_build_summary_separates_days(sample_records):
     day2 = summary[(summary["day"] == 2) & (summary["bin"] == "400490")].iloc[0]
     assert day1["approved_transactions_count"] == 2
     assert day2["approved_transactions_count"] == 1
-    assert day2["approved_total_amount"] == 700
+    assert day2["approved_total_amount_cents"] == 700
 
 
 def test_build_summary_total_matches_input(sample_records):

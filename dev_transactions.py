@@ -75,7 +75,7 @@ def build_summary(df: pd.DataFrame) -> pd.DataFrame:
         approved.groupby(["year", "month", "day", "bin"], as_index=False)
         .agg(
             approved_transactions_count=("status", "size"),
-            approved_total_amount=("amount_in_cents", "sum"),
+            approved_total_amount_cents=("amount_in_cents", "sum"),
         )
         .sort_values(["year", "month", "day", "bin"])
         .reset_index(drop=True)

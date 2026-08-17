@@ -52,7 +52,7 @@ menos una transacción aprobada, con las siguientes columnas:
 | `day`                            | Día de la transacción                                               |
 | `bin`                            | Bank Identification Number (`payment_method_type.extra.bin`)       |
 | `approved_transactions_count`   | Cantidad de transacciones con `status = "APPROVED"`                |
-| `approved_total_amount`         | Suma de `amount_in_cents` de las transacciones aprobadas            |
+| `approved_total_amount_cents`         | Suma de `amount_in_cents` de las transacciones aprobadas            |
 
 ## Supuestos
 
@@ -64,7 +64,7 @@ menos una transacción aprobada, con las siguientes columnas:
 - **Solo transacciones aprobadas generan filas**: el archivo se filtra a
   `status = "APPROVED"` antes de agrupar. Una combinación día/BIN que solo
   tuvo transacciones `DECLINED`/`ERROR` no aparece en la salida (no tiene
-  sentido reportar un `approved_total_amount = 0` para un BIN que nunca
+  sentido reportar un `approved_total_amount_cents = 0` para un BIN que nunca
   aprobó nada ese día).
 - **Monto**: se reporta en la misma unidad del archivo de origen
   (`amount_in_cents`, es decir centavos), sin conversión a unidad monetaria
